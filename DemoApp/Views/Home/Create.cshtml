@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* Metoda 1 - trimitem la controller prin parametru folosind name="parametru1"
+    <form class="form-horizontal" method="post" action="/Home/Create">
+        <div class="form-group">
+            <label class="control-label col-sm-2">Name:</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control"name="name" placeholder="Enter name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Description:</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" name="desc" placeholder="Enter description">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+*@
+
+@*Metoda2*@
+
+@using (Html.BeginForm("Create", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <div class="form-group">
+        @*<label class="control-label col-sm-2">Name:</label>*@
+        @Html.Label("Name", new { @class = "control-label col-sm-2" })
+        <div class="col-sm-4">
+            @*<input type="text" class="form-control" name="name" placeholder="Enter name">*@
+            @Html.TextBox("name", null, new { @class = "form-control", @placeholder = "Enter name" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @*<label class="control-label col-sm-2">Name:</label>*@
+        @Html.Label("Description", new { @class = "control-label col-sm-2" })
+        <div class="col-sm-4">
+            @*<input type="text" class="form-control" name="name" placeholder="Enter name">*@
+            @Html.TextBox("desc", null, new { @class = "form-control", @placeholder = "Enter description" })
+        </div>
+    </div>
+    <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+}
+<br/>
+<br/>
+<br/>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <th>@ViewBag.Name</th>
+        <th>@ViewBag.Desc</th>
+    </tr>
+</table>
